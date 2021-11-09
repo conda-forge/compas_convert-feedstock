@@ -11,7 +11,7 @@ source:
   sha256: 913d5e65057d097fff0101b11b8961152292c52a03bdaea479d3ed48432871ef
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install . -vvv
 
@@ -22,7 +22,7 @@ requirements:
     - setuptools-scm
     - wheel
   run:
-    - compas >=0.17.2,<1.8
+    - compas >=0.17.2,<1.11
     - python >=3.7
 
 test:
