@@ -7,23 +7,23 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 913d5e65057d097fff0101b11b8961152292c52a03bdaea479d3ed48432871ef
 
 build:
-  number: 1
+  number: 2
   noarch: python
   script: {{ PYTHON }} -m pip install . -vvv
 
 requirements:
   host:
     - pip
-    - python >=3.7
+    - python {{ python_min }}
     - setuptools-scm
     - wheel
   run:
     - compas >=0.17.2,<1.11
-    - python >=3.7
+    - python >={{ python_min }}
 
 test:
   source_files:
@@ -31,6 +31,7 @@ test:
     - conftest.py
   requires:
     - pytest
+    - python {{ python_min }}
   commands:
     - pytest -vv tests
 
